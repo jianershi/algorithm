@@ -1,6 +1,8 @@
 """
 151. Best Time to Buy and Sell Stock III
+method is written by Tin
 source: https://www.jiuzhang.com/solution/best-time-to-buy-and-sell-stock-iii/#tag-other
+
 
 only using current balance to track decision, the goal is to maximize balance
 """
