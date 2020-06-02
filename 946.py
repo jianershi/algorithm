@@ -26,10 +26,10 @@ class Solution:
     def fast_power(self, matrix, power, mod):
         answer = self.build_identity_matrix(len(matrix))
         while power > 0:
-            if power % 2 == 1:
+            if power & 1 == 1:
                 answer = self.multiply_matrix(answer, matrix, mod)
             matrix = self.multiply_matrix(matrix, matrix, mod)
-            power = power // 2
+            power >>= 1
         return answer
     """
     multiplying 2 matrix
