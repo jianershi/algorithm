@@ -19,14 +19,14 @@ class Solution:
 
         """
         in order to calculate [transformation_matrix] ^ m * first_column
-        we can save the time of builidng identity matrix by doing
+        we can save some time without builidng identity matrix by doing
         answer = first_column
         answer = transformation_matrix * first_column
         answer = transformation_matrix * answer
         .
         .
         .
-        since matrix multiplication allows parenthethis, this is a bit faster.
+        since matrix multiplication allows associative property (AB)C=A(BC).
         """
         while m > 0:
             if m & 1 == 1:
