@@ -60,11 +60,11 @@ class Solution:
         sum = 0
         for j in range(len(A)):
             sum += A[j]
-            heapq.heappush(prefix_sum, (sum, j))
             while prefix_sum and j - prefix_sum[0][1] > mid:
                 heapq.heappop(prefix_sum)
             if prefix_sum and sum - prefix_sum[0][0] >= k:
                 return True
+            heapq.heappush(prefix_sum, (sum, j))
 
         return False
 
