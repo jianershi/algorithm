@@ -14,8 +14,14 @@ class Solution:
 
         result = [0] * len(nums)
         for i in range(len(result)):
+            if i == 0:
+                result[i] = suffix_sum[i + 1]
+                continue
+            if i == len(result) - 1:
+                result[i] = prefix_sum[i - 1]
+                continue
             result[i] = prefix_sum[i - 1] * suffix_sum[i + 1]
-
+            
         return result
 
     """
