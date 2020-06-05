@@ -28,15 +28,18 @@ class Solution:
         if not source:
             return -1
 
-        k = len(target) #3
-        hash_target = 0
-        highest_power = 1
         BASE = 2000000
+        k = len(target) #3
+
+        highest_power = 1
+        for i in range(len(target)):
+            highest_power = (highest_power * 31) % BASE
+
         #abc
         #012 = (a31^2+b*31 + c)
         #31^3=  1*31^31^31
+        hash_target = 0
         for i in range(len(target)):
-            highest_power = highest_power * 31
             hash_target = (hash_target * 31 + ord(target[i])) % BASE
 
         hash_code = 0
