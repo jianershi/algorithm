@@ -15,13 +15,12 @@ class Solution:
     def quick_sort(self, nums, start, end):
         if start >= end:
             return
-        left = start
-        right = end
+        left, right = start, end
         pivot = (nums[left] + nums[right]) // 2
         while left <= right:
-            while nums[left] < pivot:
+            while left <= right and nums[left] < pivot:
                 left += 1
-            while nums[right] > pivot:
+            while left <= right and nums[right] > pivot:
                 right -= 1
             if left <= right:
                 nums[left], nums[right] = nums[right], nums[left]
