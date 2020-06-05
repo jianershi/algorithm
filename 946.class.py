@@ -69,13 +69,9 @@ class Solution:
 
         for i in range(n + 1):
             matrix.mat[i][0] = 10
-        for j in range(1, n + 1):
-            matrix.mat[0][j] = 0
-        for j in range(1, n + 1):
-            matrix.mat[n + 1][j] = 0
         for i in range(n + 2):
             matrix.mat[i][n + 1] = 1
-        for i in range(1, n + 1):
+        for i in range(n + 1):
             for c in range(1, i + 1):
                 matrix.mat[i][c] = 1
 
