@@ -11,9 +11,9 @@ class Solution:
         start, end = 0, len(nums) - 1
         while start + 1 < end:
             mid = start + (end - start) // 2
-            if nums[mid - 1] < nums[mid]:
-                start = mid
-            elif nums[mid] > nums[mid + 1]:
+            if nums[mid] > nums[mid + 1]:
                 end = mid
+            else:
+                start = mid
 
-        return mid
+        return max(nums[start], nums[end])
