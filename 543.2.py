@@ -3,11 +3,13 @@
 
 https://www.lintcode.com/problem/kth-largest-in-n-arrays/
 
-TLE
-
 time complexity:
 m list total, each list has on average n members;
-then i have to do O(m*k + n*mlog(m))
+to sort each array O(m*nlogn)
+to add first element O(m)
+to add next k element, each pop and push combination o(logm) * 2, need to do k times
+total O(m*nlogn + m + klogm)
+
 """
 import heapq
 class Solution:

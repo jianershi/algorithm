@@ -9,7 +9,6 @@ time complexity:
 m list total, each list has on average n members;
 then i have to do O(m*k + n*mlog(m))
 """
-import heapq
 class Solution:
     """
     @param arrays: a list of array
