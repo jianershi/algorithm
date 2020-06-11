@@ -32,24 +32,22 @@ class Solution:
     def find_max_before(self, A, window_size):
         n = len(A)
         max_before = [0] * n
-        left = 0
         right = 0
         subarray_sum = 0
-        while right < n:
-            subarray_sum += A[right]
-            if right < window_size - 1:
+        for left in range(n):
+            while right < n and right - left < window_size:
+                subarray_sum += A[right]
                 max_before[right] = 0
                 right += 1
-                continue
-            if left > 0:
-                subarray_sum -= A[left - 1]
-            max_before[right] = max(max_before[right - 1], subarray_sum)
-            left += 1
-            right += 1
+            if right - 2 >= 0:
+                max_before[right - 1] = max(max_before[right - 2], subarray_sum)
+            else:
+                max_before[right - 1] = subarray_sum
+            subarray_sum -= A[left]
         return max_before
 
 s = Solution()
-A = [6,1,4,6,3,2,7,4]
-K = 3
-L = 2
+A=[6,1,4,6,3,2,7,4]
+K=3
+L=1
 print(s.PickApples(A, K, L))
