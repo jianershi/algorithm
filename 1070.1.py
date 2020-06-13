@@ -21,7 +21,7 @@ class Solution:
             for id in ids[1:]:
                 self.union(id, main_id)
 
-        id_to_email_list = self.build_id_to_email_list(email_to_id, accounts)
+        id_to_email_list = self.build_id_to_email_list(accounts)
 
         result = []
         for id, emails in id_to_email_list.items():
@@ -55,7 +55,7 @@ class Solution:
                 email_to_id[email].append(account_id)
         return email_to_id
 
-    def build_id_to_email_list(self, email_to_id, accounts):
+    def build_id_to_email_list(self, accounts):
         id_to_email_list = {}
         for account_id, account_emails in enumerate(accounts):
             main_account_id = self.find(account_id)
@@ -65,6 +65,7 @@ class Solution:
             id_to_email_list[main_account_id] = list
 
         return id_to_email_list
+        
 s = Solution()
 accounts = [["John","johnsmith@mail.com","john_newyork@mail.com"],["John","johnsmith@mail.com","john00@mail.com"],["Mary","mary@mail.com"],["John","johnnybravo@mail.com"]]
 
