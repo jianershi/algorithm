@@ -10,6 +10,8 @@ Input:
   [0, 0, 0, 0, 1]
 ]
 Output: 6
+same problem as 122. Largest Rectangle in Histogram. apply monotonous stack to each row.
+
 """
 class Solution:
     """
