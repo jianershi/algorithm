@@ -22,6 +22,6 @@ class Solution:
                 while stack and not isinstance(stack[-1], int):
                     reversed_c.append(stack.pop())
                 stack.extend(reversed_c[::-1] * stack.pop())
-            else:
+            else: #char
                 stack.append(c)
         return "".join(stack)
