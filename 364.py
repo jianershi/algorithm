@@ -2,6 +2,9 @@
 364. Trapping Rain Water II
 https://www.lintcode.com/problem/trapping-rain-water-ii/description
 
+thought process (chinese): https://youtu.be/85eE4P96ErI
+thought process (english): https://youtu.be/hSUIFPrkOeo
+
 magic barrier, attack on titan algorithm.
 """
 import heapq
