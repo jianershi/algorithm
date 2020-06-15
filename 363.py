@@ -1,6 +1,7 @@
 """
 363. Trapping Rain Water
 https://www.lintcode.com/problem/trapping-rain-water/description?_from=ladder&&fromId=106
+monotonous stack (decreasing)
 """
 import sys
 class Solution:
