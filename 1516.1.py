@@ -1,7 +1,7 @@
 """
 1516. Xor Sum
 https://www.lintcode.com/problem/xor-sum/description
-TLE
+TLE and memory limit exceeded
 """
 from collections import deque
 class Solution:
@@ -28,44 +28,38 @@ class Solution:
         visited[n - 1][m - 1] = 1
 
         hit = 0
-        # while queue1 or queue2:
-        #     if queue1:
-        #         hit += self.process_queue(queue1, arr, QUEUE1_DIRECTION, hit_to_x_y_with_now_sum, target, 1, visited)
-        #     if queue2:
-        #         hit += self.process_queue(queue2, arr, QUEUE2_DIRECTION, hit_to_x_y_with_now_sum, target, 2, visited)
+        hit1, hit2 = 0, 0
         while queue1 or queue2:
             if queue1:
-                hit += self.process_queue(queue1, arr, QUEUE1_DIRECTION, hit_to_x_y_with_now_sum, target, 0, visited)
+                hit1 += self.process_queue(queue1, arr, QUEUE1_DIRECTION, hit_to_x_y_with_now_sum, target, 0, visited)
             if queue2:
-                hit += self.process_queue(queue2, arr, QUEUE2_DIRECTION, hit_to_x_y_with_now_sum, target, 1, visited)
+                hit2 += self.process_queue(queue2, arr, QUEUE2_DIRECTION, hit_to_x_y_with_now_sum, target, 1, visited)
 
-        # print (hit)
-        return hit
+        # print (hit1, hit2)
+        return hit1 + hit2
 
     def process_queue(self, queue, arr, queue_direction, hit_to_x_y_with_now_sum, target, flag, visited):
         hit = 0
         n = len(arr)
         m = len(arr[0])
 
-        x, y, now_sum = queue.popleft()
+        for _ in range(len(queue)):
+            x, y, now_sum = queue.popleft()
 
-        # if visited[x][y] != flag:
-        #     # met
-        #     continue
-        if x + y == (n + m) // 2:
-            hit += hit_to_x_y_with_now_sum.get((x, y, target ^ now_sum ^ arr[x][y], not flag), 0)
-            hit_to_x_y_with_now_sum[(x, y, now_sum, flag)] = hit_to_x_y_with_now_sum.get((x, y, now_sum, flag), 0) + 1
-            return hit
-
-        for delta in queue_direction:
-            nx = x + delta[0]
-            ny = y + delta[1]
-            if not self.is_valid(arr, nx, ny):
+            if visited[x][y] != flag:
+                hit += hit_to_x_y_with_now_sum.get((x, y, target ^ now_sum ^ arr[x][y], not flag), 0)
                 continue
-            next_now_sum = now_sum ^ arr[nx][ny]
 
-            queue.append((nx, ny, next_now_sum))
-            visited[nx][ny] = flag
+            for delta in queue_direction:
+                nx = x + delta[0]
+                ny = y + delta[1]
+                if not self.is_valid(arr, nx, ny):
+                    continue
+                next_now_sum = now_sum ^ arr[nx][ny]
+
+                queue.append((nx, ny, next_now_sum))
+                visited[nx][ny] = flag
+                hit_to_x_y_with_now_sum[(nx, ny, next_now_sum, flag)] = hit_to_x_y_with_now_sum.get((nx, ny, next_now_sum, flag), 0) + 1
 
         return hit
 
@@ -76,8 +70,10 @@ class Solution:
 
 
 s = Solution()
-arr = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]
-target = 0
+# arr = [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]
+# target = 0
 # arr = [[2,1,5],[7,10,0],[12,6,4]]
 # target = 11
+arr = [[1,3,3,3],[0,3,3,2],[3,0,1,1]]
+target =2
 print(s.xorSum(arr, target))
