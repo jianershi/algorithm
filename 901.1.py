@@ -5,6 +5,10 @@ https://www.lintcode.com/problem/closest-binary-search-tree-value-ii/description
 first, have to use BST search to find the target. path recorded every move to get to the target
 then make 2 iterator one go higher one go lower
 then compare which one is closer
+
+这个写法更加通用。用了令狐冲老师的写法。这样iterator是可以遍历所有往前和往后的节点的。
+而另外一种写法里，一旦去了一个节点的右子树，这个节点就被抛弃了。通用性没那么好。而且在
+建stack过程中方法也不一样。这个方法等于是用在BST中找元素的方法把寻找路径记了下来。
 """
 """
 Definition of TreeNode:
