@@ -2,6 +2,12 @@
 1469. Longest Path On The Tree
 https://www.lintcode.com/problem/longest-path-on-the-tree/description?_from=ladder&&fromId=160
 maximum recursion depth exceeded
+反例:
+5
+[0,2,2,2]
+[1,0,3,4]
+[1,2,5,6]
+因为不知道哪里是root...所以二叉树的方向性没用了。。需要建无向图。
 """
 import heapq, sys
 
