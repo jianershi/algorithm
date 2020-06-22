@@ -19,12 +19,11 @@ class Solution:
         max_area = 0
         for i in range(n + 1): # to prepare for -1 incase all the height is increasing
             curr_height = -1 if i == n else height[i]
-
-            while stack and curr_height < height[stack[-1]]:
-                h = stack.pop()
+            while stack and curr_height <= height[stack[-1]]:
+                h = height[stack.pop()]
                 left = 0 if len(stack) == 0 else stack[-1] + 1
                 right = i - 1
-                area = (right - left) * h
+                area = (right - left + 1) * h
                 max_area = max(max_area, area)
 
             stack.append(i)
