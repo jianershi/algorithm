@@ -32,7 +32,7 @@ class Solution:
             stack = []
             for j in range(m + 1):
                 if j == m:
-                    curr_height = -1
+                    curr_height = -1 #use -1 to flush out all the remaining height in the monotonous stack
                 elif matrix[i][j] == 0:
                     curr_height = 0
                     curr_level_height[j] = 0
