@@ -27,7 +27,7 @@ to find out if there exist one subarray so that if A[j] - prefix_sum() >= k
 i only need to find minimum of all prefix_sum between i and j.
 using heap.
 
-i can do it in O(nlogn) time.
+i can do it in O(nlogn) time. n positions to search, log(n) for inserting o(1) for peeking
 
 overall O(nlogn*logn) time complexity
 """
@@ -56,11 +56,11 @@ class Solution:
         return -1
 
     def is_valid(self, A, k, mid):
-        prefix_sum = [(0, -1)]
+        prefix_sum = [(0, -1)] #prefix_sum, index
         sum = 0
         for j in range(len(A)):
             sum += A[j]
-            while prefix_sum and j - prefix_sum[0][1] > mid:
+            while prefix_sum and j - prefix_sum[0][1] > mid: #instead of j - i + 1 because i have to initalize (0, -1) in order for 1st prefix_sum to make sense
                 heapq.heappop(prefix_sum)
             if prefix_sum and sum - prefix_sum[0][0] >= k:
                 return True
