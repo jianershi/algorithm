@@ -18,7 +18,7 @@ answer:
 dp[0][n - 1]
 
 initial condition:
-dp[i][i] = A[i]
+dp[i][i] = 0 #cost to merge itself 0
 
 time complexity:
 o(n^3)
