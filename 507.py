@@ -2,9 +2,17 @@
 507. Wiggle Sort II
 https://www.lintcode.com/problem/wiggle-sort-ii/description
 九章算法强化班C7..强化班其实没讲。。
-1. quick select 找中位数 O(n) -> find kth
-2. 3 way partition 分成 > mean = mean < mean 3部分，148. Sort Colors O(n)
-3. 答案奇数位 = 这个数组后半部分， 欧数位为前半部分。 https://leetcode.com/problems/wiggle-sort-ii/discuss/77677/O(n)%2BO(1)-after-median-Virtual-Indexing
+
+这题真心难。。。
+基本思路 
+
+1. 先用Find Kth Smallest/Largest Number in an Array找中位数
+2. 再用3 Way Partition (148 Sort Colors) 分成 > mean | ==mean | <mean 3部分
+3. 结果奇数位 = 现在数组的后半部分(<=mean的部分，并且==mean的部分在最前面)
+4. 结果偶数位 = 现在数组的前半部分(>=mean的部分， 并且==mean的部分在最后面)
+ 
+分成3个部分/把==mean的单独分出来的意义在哪里？中位数如有重复在第3和第4部被分到首尾去了，不会最后紧挨着
+
 O(n) time compleixity, O(n) space complexity
 """
 class Solution:
