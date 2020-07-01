@@ -20,7 +20,7 @@ class Solution:
             return nums[start]
 
         left, right = start, end
-        pivot = nums[(left + start) // 2]
+        pivot = nums[(left + right) // 2]
 
         while left <= right:
             while left <= right and nums[left] > pivot:
