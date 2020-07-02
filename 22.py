@@ -21,7 +21,7 @@ class Solution(object):
             return
 
         for item in curr_list:
-            if type(item) == list:
+            if isinstance(item, list):
                 self.dfs(item, 0, results)
             else:
                 results.append(item)
