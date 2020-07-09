@@ -1,3 +1,6 @@
+"""
+九章标准答案
+"""
 class Direction:
     UP = 'UP'
     DOWN = 'DOWN'
