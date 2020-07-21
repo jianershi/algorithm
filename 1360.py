@@ -34,7 +34,7 @@ class Solution:
                 
             l = 0
             r = len(level) - 1
-            while 0 <=l <= r <= len(level) - 1:
+            while 0 <= l <= r <= len(level) - 1:
                 if level[l] != level[r]:
                     return False
                 l += 1
