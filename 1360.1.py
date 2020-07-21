@@ -32,13 +32,7 @@ class Solution:
                     q.append(f.left)
                     q.append(f.right)
                 
-            l = 0
-            r = len(level) - 1
-
-            while l <= r:
-                print (l, r, len(level))
-                if level[l] != level[r]:
+            for i in range(len(level)):
+                if level[i] != level[len(level) - 1 - i]:
                     return False
-                l += 1
-                r -= 1
         return True
