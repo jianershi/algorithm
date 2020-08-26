@@ -24,10 +24,8 @@ public:
     bool isMatch(const string& s, string p) {
         int n = s.size();
         if (p.size()) {
-            if (p[0] != '^') p = ".*" + p;
-            else p = p.substr(1);
-            if (p[p.size()-1] != '$') p = p + ".*";
-            else p = p.substr(0,p.size()-1);
+            p = p[0] == '^' ? p = p.substr(1) : ".*" + p;
+            p = p[p.size()-1] == '$' ? p.substr(0,p.size()-1) : p + ".*";
         }
         int m = p.size();
         bool dp[n + 1][m + 1];
