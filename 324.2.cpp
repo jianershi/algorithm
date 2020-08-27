@@ -32,7 +32,6 @@ public:
         int m = p.size();
         int now = 0, old = 0;
         bool dp[2][m + 1];
-        memset(dp, false, sizeof dp);
         dp[0][0] = true;
         for (int j = 2; j < m + 1; ++j) {
             dp[now][j] = (p[j - 1] == '*' || p[j - 1] == '?') && dp[now][j - 2];
@@ -41,11 +40,8 @@ public:
             old = now;
             now = 1 - now;
             for (int j = 0; j < m + 1; ++j) {
-                if (j == 0) {
-                    dp[now][j] = false;
-                    continue;
-                }
-                dp[i % 2][j] = false;
+                dp[now][j] = false;
+                if (j == 0) continue;
                 if (s[i - 1] == p[j - 1] || p[j - 1] == '.') {
                     dp[now][j] = dp[old][j - 1];
                 } else if (p[j - 1] == '*') {
