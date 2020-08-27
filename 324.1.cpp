@@ -31,18 +31,14 @@ public:
         }
         int m = p.size();
         bool dp[2][m + 1];
-        memset(dp, false, sizeof dp);
         dp[0][0] = true;
         for (int j = 2; j < m + 1; ++j) {
             dp[0][j] = (p[j - 1] == '*' || p[j - 1] == '?') && dp[0][j - 2];
         }
         for (int i = 1; i < n + 1; ++i) {
             for (int j = 0; j < m + 1; ++j) {
-                if (j == 0) {
-                    dp[i % 2][j] = false;
-                    continue;
-                }
                 dp[i % 2][j] = false;
+                if (j == 0) continue;
                 if (s[i - 1] == p[j - 1] || p[j - 1] == '.') {
                     dp[i % 2][j] = dp[(i - 1) % 2][j - 1];
                 } else if (p[j - 1] == '*') {
