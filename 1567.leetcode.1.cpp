@@ -1,6 +1,8 @@
 /**
 1567. Maximum Length of Subarray With Positive Product
 https://leetcode.com/problems/maximum-length-of-subarray-with-positive-product/
+slightly modified solution for readability based on 
+https://leetcode.com/problems/maximum-length-of-subarray-with-positive-product/discuss/819278/Java-O(n)-time-O(1)-space
 **/
 class Solution {
 public:
