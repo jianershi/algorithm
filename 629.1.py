@@ -1,5 +1,6 @@
 """
 629. Minimum Spanning Tree
+https://www.lintcode.com/problem/minimum-spanning-tree/description
 original auther 明尼苏达大角羊 from
 https://www.jiuzhang.com/solution/minimum-spanning-tree/#tag-other
 
