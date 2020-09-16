@@ -1,5 +1,6 @@
 """
 235. Prime Factorization
+https://www.lintcode.com/problem/prime-factorization/
 """
 import math
 class Solution:
