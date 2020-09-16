@@ -1,2 +1,5 @@
 test*
 *.pyc
+a.out.dSYM
+*.out
+.DS_Store
