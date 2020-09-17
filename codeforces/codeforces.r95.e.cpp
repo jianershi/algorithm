@@ -45,14 +45,15 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #define debug(x...)
 #endif
 long long fastPower(long long a, long long n) {
+    a %= MOD;
     long long ans = 1;
-    long long base = a;
     while (n > 0) {
-        if (n & 1) ans = (ans % MOD * base % MOD) % MOD;
-        base = (base % MOD * base % MOD) % MOD;
+        if (n & 1) 
+            ans = ans * a % MOD;
+        a = a * a % MOD;
         n >>= 1;
     }
-    return ans % MOD;
+    return ans;
 }
 
 vector<int> calPrefixSum(vector<int> &d) {
