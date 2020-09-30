@@ -36,8 +36,9 @@ B xxxxx|xxxxxxxxxx
        j
 if both cut are valid
 A[i] < B[i]
+that means B[j] > all numbers A[0:i] <- if j is the kth smallest, then it cannot be A[0:i], so kth smallest must exist from A[i+1:] and B
 that means A[0] - A[i] must be in the combined kth smallest.
-we need to search A[i:] and B
+we need to search A[i:] and B for the k - i - 1th smallest
 """
 class Solution:
     """
