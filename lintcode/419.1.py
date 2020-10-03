@@ -18,14 +18,13 @@ class Solution:
             "D": 500,
             "M": 1000
         }
-
-        result = []
-        for i in range(len(s)):
-            if result and result[-1] < CHAR_TO_DIGIT[s[i]]:
-                result[-1] = -result[-1]
-            result.append(CHAR_TO_DIGIT[s[i]])
-
-        return sum(result)
-
-s = Solution()
-print(s.romanToInt("IV"))
+        
+        prev = None
+        ans = 0
+        for c in s:
+            if not prev or CHAR_TO_DIGIT[c] <= prev:
+                ans = ans + CHAR_TO_DIGIT[c]
+            else:
+                ans = ans - 2 * prev + CHAR_TO_DIGIT[c]
+            prev = CHAR_TO_DIGIT[c]
+        return ans
