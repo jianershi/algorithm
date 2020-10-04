@@ -1,7 +1,7 @@
 """
 38. Search a 2D Matrix II
 https://www.lintcode.com/problem/search-a-2d-matrix-ii/description
-左下角->右上角
+右上角->左下角
 """
 class Solution:
     """
@@ -11,22 +11,16 @@ class Solution:
     """
     def searchMatrix(self, matrix, target):
         # write your code here
-        if not matrix or not matrix[0]:
-            return 0
-        n = len(matrix)
-        m = len(matrix[0])
-
+        n, m = len(matrix), len(matrix[0])
+        i, j = 0, m - 1
         match = 0
-
-        i, j = n - 1, 0
-        while i >=0 and j < m:
-            if matrix[i][j] < target:
-                j += 1
-            elif matrix[i][j] > target:
-                i -= 1
+        while i < n and j >= 0:
+            if target < matrix[i][j]:
+                j -= 1
+            elif target > matrix[i][j]:
+                i += 1
             else:
-                match += 1
-                j += 1
-                i -= 1
-
+                match +=1
+                i += 1
+                j -= 1
         return match
