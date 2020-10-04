@@ -16,39 +16,37 @@ class Solution:
     """
     def continuousSubarraySumII(self, A):
         # write your code here
-        if not A:
-            return -1, -1
-
         n = len(A)
+
         now_sum = 0
         
-        max_subarray_sum = -sys.maxsize
-        max_subarray_index = None, None
         min_sum, min_sum_index = 0, -1
-
-        min_subarray_sum = sys.maxsize
-        min_subarray_index = None, None
         max_sum, max_sum_index = 0, -1
-
+        
+        min_subarray_sum = sys.maxsize
+        max_subarray_sum = -sys.maxsize
+        
+        max_subarray_index = None, None
+        min_subarray_index = None, None
+        
         for i in range(n):
             now_sum += A[i]
             if now_sum - min_sum > max_subarray_sum:
-                max_subarray_sum = now_sum - min_sum
                 max_subarray_index = min_sum_index + 1, i
-
+                max_subarray_sum = now_sum - min_sum
+                
             if now_sum - max_sum < min_subarray_sum:
-                min_subarray_sum = now_sum - max_sum
                 min_subarray_index = max_sum_index + 1, i
-
+                min_subarray_sum = now_sum - max_sum
+                
             if now_sum < min_sum:
                 min_sum = now_sum
                 min_sum_index = i
-
+                
             if now_sum > max_sum:
                 max_sum = now_sum
                 max_sum_index = i
-
-        if max_subarray_sum < now_sum - min_subarray_sum and min_subarray_index[1] - min_subarray_index[0] != len(A) - 1:
-            return (min_subarray_index[1] + 1) % n, (min_subarray_index[0] - 1) % n
-        return max_subarray_index
-
+        
+        if max_subarray_sum > now_sum - min_subarray_sum or min_subarray_index[1] - min_subarray_index[0] == n - 1:
+            return list(max_subarray_index)
+        return [(min_subarray_index[1] + 1) % n, (min_subarray_index[0] - 1) % n]
