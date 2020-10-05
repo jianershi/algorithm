@@ -2,6 +2,9 @@
 780. Remove Invalid Parentheses
 https://www.lintcode.com/problem/remove-invalid-parentheses/description?_from=ladder&&fromId=160
 九章强化班
+
+301. Remove Invalid Parentheses
+https://leetcode.com/problems/remove-invalid-parentheses/
 """
 PATTERN = [
     ['(',')'],
