@@ -1,5 +1,9 @@
 """
 57. 3Sum
+https://www.lintcode.com/problem/3sum/description
+
+15. 3Sum
+https://leetcode.com/problems/3sum/
 -a = b + c
 """
 class Solution:
