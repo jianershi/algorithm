@@ -1,6 +1,9 @@
 """
 384. Longest Substring Without Repeating Characters
-https://www.lintcode.com/problem/longest-substring-without-repeating-characters/description?_from=ladder&&fromId=37
+https://www.lintcode.com/problem/longest-substring-without-repeating-characters/description
+
+3. Longest Substring Without Repeating Characters
+https://leetcode.com/problems/longest-substring-without-repeating-characters/
 """
 """
 0123
