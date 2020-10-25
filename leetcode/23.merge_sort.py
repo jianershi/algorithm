@@ -7,7 +7,7 @@ https://www.lintcode.com/problem/merge-k-sorted-lists/description
 
 merge sort
 
-o(klogn)
+o(nlogk)
 k: number of lists
 n: total number of elements
 """
