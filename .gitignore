@@ -3,3 +3,4 @@ test*
 a.out.dSYM
 *.out
 .DS_Store
+*venv
