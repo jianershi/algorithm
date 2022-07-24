@@ -7,6 +7,9 @@ https://www.lintcode.com/problem/subarray-sum-closest/description
 sum from i to j i, j included
 prefix_sum(j + 1) - prefix_sum(i)
 
+0,1,2
+  ^
+  prefix_sum(2), prefix_sum(previous kth digit)
 """
 import sys
 class Solution:
