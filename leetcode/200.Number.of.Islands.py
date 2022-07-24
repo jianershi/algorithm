@@ -1,4 +1,7 @@
 """
+200. Number of Islands
+https://leetcode.com/problems/number-of-islands/
+
 union?  <-probably but forgot how to implment
 bfs
 o(n)
