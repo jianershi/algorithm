@@ -1,3 +1,8 @@
+"""
+200 · Longest Palindromic Substring
+https://www.lintcode.com/problem/200/
+
+"""
 class Solution:
     """
     @param s: input string
