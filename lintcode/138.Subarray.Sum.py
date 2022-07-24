@@ -1,4 +1,8 @@
 """
+138. Subarray Sum
+https://www.lintcode.com/problem/subarray-sum/description
+九章强化班C7
+
 0.......i.....j
 if i+++ j == 0
 0---j = 0 --- i

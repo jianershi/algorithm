@@ -16,7 +16,7 @@ class Solution:
     """
     def subarraySum(self, nums):
         # write your code here
-        prefix_sum = {0:-1}
+        prefix_sum = {0: -1}
         now_sum = 0
         for i, num in enumerate(nums):
             now_sum += num
