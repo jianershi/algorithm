@@ -1,0 +1,36 @@
+"""
+59. 3Sum Closest
+https://www.lintcode.com/problem/3sum-closest/description
+
+16. 3Sum Closest
+https://leetcode.com/problems/3sum-closest/
+
+a + b + c closest to target
+a + b cloeset to target - c
+0 1  2 3 4 5
+^   ^
+"""
+import sys
+class Solution:
+    def threeSumClosest(self, nums: List[int], target: int) -> int:
+        nums = sorted(nums)
+        
+        min_diff = sys.maxsize
+        min_diff_sum = None
+        for i in range(len(nums)):
+            left, right = i + 1, len(nums) - 1
+            while left < right:
+                diff = abs(nums[left] + nums[right] + nums[i] - target)
+                if diff < min_diff:
+                    min_diff = diff
+                    min_diff_sum = nums[left] + nums[right] + nums[i]
+                if left < right and nums[left] + nums[right] + nums[i] < target:
+                    left += 1
+                    continue
+                elif left < right and nums[left] + nums[right] + nums[i] > target:
+                    right -= 1
+                    continue
+                else:
+                    break
+        
+        return min_diff_sum
