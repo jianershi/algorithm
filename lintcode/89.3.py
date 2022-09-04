@@ -6,16 +6,18 @@ https://www.lintcode.com/problem/k-sum/description?_from=ladder&&fromId=106
 背包问题
 
 dp[i][k][s] how many ways to choose k numbers out of previous i numbers to get target s
-
 k is additional dimention because the question requires exactly k numbers
 
 answer:
-sum(dp[n][k][target])
+dp[n][k][target]
 
 initial condiiton
 dp[i][0][0] = 1 # choose 0 number out of previous i number so that sum is 0: 1 way(not to choose at all)
 dp[0][0][s] = 0 for s > 0
 
+transfer:
+dp[i][k][s] = dp[i - 1][k - 1][s - A[i]] if A[i] is choosen
+            + dp[i - 1][k][s] if A[i] is not choosen
 
 """
 class Solution:
