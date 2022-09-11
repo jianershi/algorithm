@@ -1,6 +1,11 @@
 """
 31. Partition Array
+https://www.lintcode.com/problem/31/
 
+notice that the requirement is to return the first element such that A[i] >= k,
+so if we are using two pointers, the left pointer must stop when it first see an element that is A[i] == k,
+keep moving the right pointer leftwards until it passed the left pointer. 
+wheverever the leftpointer points is the first element that is A[i] >= k
 """
 class Solution:
     """
