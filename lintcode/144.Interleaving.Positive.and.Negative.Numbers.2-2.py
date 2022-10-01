@@ -6,6 +6,8 @@ o(n) time
 first move either positive or negative numbers to a side using partition
 then interleave them
 
+partition using pointers moving in the same direction
+
 """
 from typing import (
     List,
@@ -31,16 +33,11 @@ class Solution:
     
     def partition(self, nums, start_positive):
         flag = 1 if start_positive else -1
-        l, r = 0, len(nums) - 1
-        while l <= r:
-            while l <= r and nums[l] * flag > 0:
-                l += 1
-            while l <= r and nums[r] * flag < 0:
-                r -= 1
-            if l <= r:
-                nums[l], nums[r] = nums[r], nums[l]
-                l += 1
-                r -= 1
+        pos_idx = 0
+        for i in range(len(nums)):
+            if nums[i] * flag >= 0:
+                nums[pos_idx], nums[i] = nums[i], nums[pos_idx]
+                pos_idx += 1
 
     def interleave(self, nums, same_length):
         # xxxooo
