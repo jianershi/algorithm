@@ -11,8 +11,6 @@ o(log(n) + k * 2 something like that
 
 really bad solution. 
 
-TODO: haven't finished this question yet, redo it next time.
-
 """
 class Solution:
     def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:

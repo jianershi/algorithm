@@ -1,30 +1,31 @@
 """
 14. First Position of Target
-
+https://www.lintcode.com/problem/14/
 """
+from typing import (
+    List,
+)
+
 class Solution:
     """
     @param nums: The integer array.
     @param target: Target to find.
     @return: The first position of target. Position starts from 0.
     """
-    def binarySearch(self, nums, target):
+    def binary_search(self, nums: List[int], target: int) -> int:
         # write your code here
+        if not nums:
+            return -1
         start, end = 0, len(nums) - 1
-        while start + 1 < end:
+        while start < end:
             mid = (start + end) // 2
             if nums[mid] < target:
-                start = mid
+                start = mid + 1
             elif nums[mid] == target:
-                end = mid #because want to find the first target, there might be a number before mid, seek on the left side
+                end = mid #trying to find first position, so this may or may not be the result
             else:
-                end = mid
-
-        #first position of target. so search start first
+                end = mid - 1
+        
         if nums[start] == target:
             return start
-
-        if nums[end] == target:
-            return end
-
         return -1
