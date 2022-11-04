@@ -2,6 +2,9 @@
 610. Two Sum - Difference equals to target
 https://www.lintcode.com/problem/two-sum-difference-equals-to-target/description
 binary search
+
+给定一个排序后的整数数组，找到两个数的差等于目标值。 
+你需要返回一个包含两个数字的列表 [nums1, num2],使得num1与num2的差为target, 同时num1必须小于num2.
 """
 class Solution:
     """
